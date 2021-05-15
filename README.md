@@ -1,34 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Learn Tailwind
 
-## Getting Started
+tailwind breakpoint
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+```json
+{
+  "sm": "640px",
+  "md": "768px",
+  "lg": "1024px",
+  "xl": "1280px",
+  "2xl": "1536px"
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+example
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```html
+<div className='bg-gray-100 sm:bg-yellow-300 md:bg-green-400 lg:bg-pink-400 xl:bg-blue-500 2xl:bg-red-500'></div>
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+explaination
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Upto `640px` Background Color `yellow`
+2. `640px` to `768px` Background Color `green`
+3. `768px` to `1024px` Background Color `pink`
+4. `1024px` to `1280px` Background Color `blue`
+5. `1280px` to `1536px` Background Color `red`
 
-## Learn More
+state variant
 
-To learn more about Next.js, take a look at the following resources:
+```html
+<div className='hover:bg-gray-200 active:bg-green-500 focus:placeholder-purple-200'></div>
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+directive apply
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```html
+<div className='.btn'>Test</div>
 
-## Deploy on Vercel
+<!-- Then create the .btn style in css file -->
+<style>
+@tailwind base;
+@tailwind components;
+.btn {
+  @apply inline-block px-5 py-3 text-sm 
+  font-semibold tracking-wider text-white uppercase 
+  bg-indigo-500 rounded-lg shadow-lg sm:text-base 
+  hover:bg-indigo-400 hover:-translate-y-0.5 transform transition 
+  focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 
+  focus:ring-opacity-50 active:bg-indigo-600 sm:hover:bg-green-500;
+}
+@tailwind utilities;
+</style>
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The orders of adding class in tailwind css is matter or you can put in `@layer` component directive
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .btn {
+    @apply inline-block px-5 py-3 text-sm font-semibold tracking-wider uppercase rounded-lg focus:outline-none focus:ring focus:ring-offset-2 sm:text-base;
+  }
+  .btn-primary {
+    @apply text-white bg-indigo-500 hover:bg-indigo-400 focus:ring-indigo-500 focus:ring-opacity-50 active:bg-indigo-600;
+  }
+  .btn-secondary {
+    @apply inline-block px-5 py-3 text-gray-800 bg-gray-300 hover:bg-gray-200 focus:ring-gray-300 focus:ring-opacity-50 active:bg-gray-400;
+  }
+}
+```
