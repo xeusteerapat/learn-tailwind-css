@@ -71,3 +71,41 @@ The orders of adding class in tailwind css is matter or you can put in `@layer` 
   }
 }
 ```
+
+Theme configuration in `tailwind.config.js`
+
+```javascript
+module.exports = {
+  purge: [],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          light: "#3fbaeb",
+          DEFAULT: "#0fa9e6",
+          dark: "#0c87b8",
+        },
+      },
+      fontFamily: {
+        headline: "Poppins, sans-serif",
+      },
+    },
+  },
+  variants: {
+    extend: {
+      backgroundColor: ["active"],
+    },
+  },
+  plugins: [],
+};
+```
+
+then apply `brand` theme to the class with color you want the `brand` theme such as
+
+```html
+<div className='text-brand'></div>
+<div className='text-brand-light'></div>
+<div className='text-brand-dark'></div>
+<h1 className='font-headline'></h1>
+```

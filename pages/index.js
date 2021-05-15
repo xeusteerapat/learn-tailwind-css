@@ -15,9 +15,9 @@ export default function Home() {
               className='object-center mt-6 rounded-lg shadow-xl sm:mt-8 sm:h-64 sm:w-full sm:object-cover lg:hidden'
             />
             <h1 className='mt-6 text-2xl font-bold text-gray-900 sm:mt-8 sm:text-4xl lg:text-3xl xl:text-4xl'>
-              You can sleep anywhere.
+              You can sleep from anywhere.
               <br className='hidden lg:inline' />
-              <span className='text-indigo-500'>Take advantage of it</span>
+              <span className='text-indigo-500'>Take advantage of it.</span>
             </h1>
             <p className='mt-2 text-gray-600 sm:mt-4 sm:text-xl'>
               Sleepation helps you find sleep-friendly rentals in beautiful
