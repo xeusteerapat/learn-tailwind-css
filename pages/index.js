@@ -1,8 +1,19 @@
 import Image from 'next/image';
 import Destination from '../components/destination';
 import popularDestination from '../data/destination';
+import Link from 'next/link';
 
 export default function Home() {
+  const isShow = false;
+  if (isShow) {
+    return (
+      <>
+        <Link href='https://stackoverflow.com/' passHref={true} href='/viewPdf'>
+          <button>StackOverflow</button>
+        </Link>
+      </>
+    );
+  }
   return (
     <div>
       <div className='grid bg-gray-100 lg:grid-cols-2 2xl:grid-cols-5'>
@@ -31,8 +42,22 @@ export default function Home() {
               >
                 Book your escape
               </a>
-              <a href='#' className='btn btn-secondary'>
+              <a
+                href='https://github.com/abhinavkorpal/awesome-computer-science-EBook/blob/master/DesignPatterns/Design%20Patterns%20in%20Python.pdf'
+                className='btn btn-secondary'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
                 Learn More
+              </a>
+
+              <a
+                href='/link-to-pdf'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='btn btn-secondary'
+              >
+                PDF
               </a>
             </div>
           </div>
